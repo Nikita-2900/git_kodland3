@@ -23,6 +23,10 @@ def ban_user(message):
     else:
         bot.reply_to(message, "Эта команда должна быть использована в ответ на сообщение пользователя, которого вы хотите забанить.")
 
+@bot.message_handler(content_types=['new_chat_members'])
+def make_some(message):
+    bot.send_message(message.chat.id, 'qq')
+
 @bot.message_handler(func=lambda message: True)
 def reklama_message(message):
     if message.text.split('https://', maxsplit = 1)[0] == '':
